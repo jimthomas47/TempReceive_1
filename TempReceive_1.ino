@@ -53,7 +53,7 @@ float temp1C;
 float temp1F;
 
 unsigned long startTime;
-unsigned long clearTime = 240000;	// in milliseconds
+unsigned long clearTime = 2400000;	// in milliseconds
 
 // Number of Temperature sensors
 #define NumNodes 3
@@ -190,7 +190,7 @@ void displayData() {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Serial print the temperatures in F
-//  temporaryly just print Outside,Attic,Office every time any data is received
+//  temporaryly just print Attic,Outside,Office every time any data is received
 //  later need to modify so a node data is plotted only when that node transmits
 ///////////////////////////////////////////////////////////////////////////
 void serialOut() {
