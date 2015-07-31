@@ -105,7 +105,7 @@ void setup() {
   sensors.setResolution(Therm1, 12);
 
   Serial.begin(9600);
-//  Serial.println("Temperature Data");
+  //  Serial.println("Temperature Data");
 
   SPI.begin();
   // Radio setup
@@ -120,7 +120,7 @@ void setup() {
   display.clearDisplay();   	// clears the screen and buffer
 
   startTime = millis();		// start the timer
-
+  clearTemperatures();
 }
 
 void loop() {
@@ -137,7 +137,7 @@ void loop() {
   displayData();
   delay(100);
   if ( (millis() - startTime) > clearTime) {
-    clearTemperatures();
+    //   clearTemperatures();
     startTime = millis();		// restart the timer
   }
 }
@@ -217,7 +217,7 @@ void getRadioData() {
     NodeTempC[header.from_node] = payload.tempC;
     NodeTempF[header.from_node] = payload.tempF;
     NodeVcc[header.from_node] = payload.Vcc;
-      serialOut();
+    serialOut();
     /*
     		Serial.print("Received packet #");
     		Serial.print(NodeCounter[header.from_node]);
@@ -245,8 +245,8 @@ void getRadioData() {
 
 void clearTemperatures() {
   for (i = 1; i <= NumNodes; i++) {
-    NodeTempC[i] = 0.0;
-    NodeTempF[i] = 0.0;
-    NodeVcc[i] = 0.0;
+    NodeTempC[i] = 80.0;
+    NodeTempF[i] = 80.0;
+    NodeVcc[i] = 80.0;
   }
 }
